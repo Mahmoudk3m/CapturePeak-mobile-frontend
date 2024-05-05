@@ -30,19 +30,6 @@ module.exports = {
           900: '#4c1d95', // Darkest
         },
       },
-      container: {
-        padding: {
-          DEFAULT: '0.75rem',
-          sm: '0.75rem',
-          lg: '1rem',
-        },
-        screens: {
-          sm: '600px',
-          md: '728px',
-          lg: '984px',
-          '2xl': '1200px',
-        },
-      },
     },
   },
   plugins: [],
