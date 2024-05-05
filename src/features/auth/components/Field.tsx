@@ -25,6 +25,7 @@ export default function Field({
           name={name}
           render={({field: {onChange, onBlur, value}}) => (
             <TextInput
+              className="text-gray-800"
               placeholder={placeholder}
               placeholderTextColor={'gray'}
               onBlur={onBlur}

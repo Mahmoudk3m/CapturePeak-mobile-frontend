@@ -28,6 +28,8 @@ export default function LoginForm() {
 
   return (
     <>
+      {isError && <ErrorMessage message="Invalid credentials" />}
+
       <Animated.View
         className="w-full"
         entering={FadeInDown.duration(1000).springify()}>
@@ -73,7 +75,6 @@ export default function LoginForm() {
           <Text className="text-sky-600 font-bold">SignUp</Text>
         </TouchableOpacity>
       </Animated.View>
-      {isError && <ErrorMessage message="Invalid credentials" />}
     </>
   );
 }
