@@ -1,10 +1,10 @@
 import RegisterForm from '../components/RegisterForm';
-import AuthLayout from '../layout/AuthLayout';
+import FormLayout from '../../../Shared/layout/FormLayout';
 import React from 'react';
 export default function Register() {
   return (
-    <AuthLayout currentForm="Register">
+    <FormLayout currentForm="Register">
       <RegisterForm />
-    </AuthLayout>
+    </FormLayout>
   );
 }

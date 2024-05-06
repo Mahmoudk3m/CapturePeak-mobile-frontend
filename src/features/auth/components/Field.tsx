@@ -9,6 +9,7 @@ export default function Field({
   name,
   errorMessage,
   secureTextEntry,
+  defaultValue,
   ...rest
 }: {
   placeholder: string;
@@ -16,6 +17,7 @@ export default function Field({
   name: string;
   errorMessage?: string;
   secureTextEntry?: boolean;
+  defaultValue?: string;
 }) {
   return (
     <>
@@ -33,6 +35,7 @@ export default function Field({
               value={value}
               secureTextEntry={secureTextEntry}
               underlineColorAndroid="transparent"
+              defaultValue={defaultValue}
               {...rest}
             />
           )}

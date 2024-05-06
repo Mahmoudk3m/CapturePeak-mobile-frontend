@@ -12,7 +12,6 @@ export const useUserLogin = () => {
   return useMutation({
     mutationKey: ['userLogin'],
     onSuccess: async data => {
-      console.log('Login success:', data);
       await setToken('token', 'token', data.token);
       setUser(data);
     },

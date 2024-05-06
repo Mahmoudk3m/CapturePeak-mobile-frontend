@@ -9,11 +9,13 @@ import {useUploadPost} from '../api/uploadPost';
 
 export default function UploadButton() {
   const {mutate, isPending} = useUploadPost();
+
   const handlePress = () => {
     const options: ImageLibraryOptions = {
-      mediaType: 'mixed',
+      mediaType: 'photo',
       quality: 1,
       selectionLimit: 1,
+      includeBase64: true,
     };
 
     launchImageLibrary(options, response => {
@@ -23,10 +25,11 @@ export default function UploadButton() {
         console.log('ImagePicker Error: ', response.errorMessage);
       } else if (response.assets && response.assets.length > 0) {
         const selectedFile = response.assets[0];
-        const source = selectedFile.uri;
+        const uri = `data:${selectedFile.type};base64,${selectedFile.base64}`;
         mutate({
           title: selectedFile.fileName || '',
-          file: source || '',
+          uri: uri || '',
+          type: selectedFile.type || '',
         });
       }
     });

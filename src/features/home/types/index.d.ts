@@ -19,7 +19,8 @@ declare namespace Home {
   };
   type UploadPost = {
     title: string;
-    file: string;
+    type: string;
+    uri: string;
   };
   type ReactPost = {
     postId: string;

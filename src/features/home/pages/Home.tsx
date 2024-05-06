@@ -4,11 +4,20 @@ import Post from '../components/Post';
 import React from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import Header from '@/Shared/components/Header';
+import {queryClient} from '@/lib/queryClient';
+import {RefreshControl} from 'react-native';
 export default function Home() {
   const {data, isLoading, isError} = useGetPosts();
 
   return (
-    <ScrollView className="w-full flex-auto bg-white">
+    <ScrollView
+      refreshControl={
+        <RefreshControl
+          refreshing={isLoading}
+          onRefresh={() => queryClient.invalidateQueries({queryKey: ['posts']})}
+        />
+      }
+      className="w-full flex-auto bg-white">
       <Header />
 
       <View className="flex flex-col items-center justify-center">

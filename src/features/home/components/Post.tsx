@@ -20,7 +20,7 @@ export default function Post({
   last,
 }: Home.PostProps) {
   const {mutate} = useReactPost();
-  const {mutate: deletePost} = useDeletePost();
+  const {mutate: deletePost, isPending: deletePostPending} = useDeletePost();
 
   const [isLiked, setIsLiked] = useState(liked);
   const [likesCount, setLikesCount] = useState(likes);
@@ -30,8 +30,6 @@ export default function Post({
   const isVideo = image.includes('video');
 
   const {user} = useUserStore();
-  console.log(user, 'user');
-  console.log(username, 'username');
   const handleDelete = () => {
     deletePost(id);
   };
@@ -58,6 +56,12 @@ export default function Post({
 
   return (
     <View className={clsx('w-full', last && 'mb-24')}>
+      {/* when deleting add a popup and make screen darker */}
+      {deletePostPending && (
+        <View className="absolute top-0 left-0 w-full h-full bg-black/50 z-50 flex justify-center items-center">
+          <Text className="text-white text-2xl">Deleting...</Text>
+        </View>
+      )}
       <View className="flex flex-row items-center pb-4">
         <Image
           source={{
