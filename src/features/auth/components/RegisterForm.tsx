@@ -18,9 +18,9 @@ export default function RegisterForm() {
     control,
     handleSubmit,
     formState: {errors},
-  } = useForm({resolver: yupResolver(registerSchema)});
+  } = useForm<AuthTypes.Payload>({resolver: yupResolver(registerSchema)});
 
-  const {mutate, isError} = useUserLogin();
+  const {mutate, isError, isPending} = useUserLogin();
 
   const onSubmit = (data: AuthTypes.Payload) => {
     const formattedData = {
@@ -75,7 +75,7 @@ export default function RegisterForm() {
           className="w-full bg-sky-400 p-3 rounded-2xl mb-3"
           onPress={handleSubmit(onSubmit)}>
           <Text className="text-xl font-bold text-white text-center">
-            Register
+            {isPending ? 'Registering User' : 'Register'}
           </Text>
         </TouchableOpacity>
       </Animated.View>

@@ -20,7 +20,7 @@ export default function LoginForm() {
     formState: {errors},
   } = useForm<AuthTypes.Payload>({resolver: yupResolver(loginSchema)});
 
-  const {mutate, isError} = useUserLogin();
+  const {mutate, isError, isPending} = useUserLogin();
 
   const onSubmit = (data: AuthTypes.Payload) => {
     const formattedData = {
@@ -64,7 +64,7 @@ export default function LoginForm() {
           className="w-full bg-sky-400 p-3 rounded-2xl mb-3"
           onPress={handleSubmit(onSubmit)}>
           <Text className="text-xl font-bold text-white text-center">
-            Login
+            {isPending ? 'Logging In ...' : 'Login'}
           </Text>
         </TouchableOpacity>
       </Animated.View>
