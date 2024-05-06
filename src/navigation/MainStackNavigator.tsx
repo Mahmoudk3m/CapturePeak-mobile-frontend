@@ -10,7 +10,6 @@ const Stack = createNativeStackNavigator();
 const MainStackNavigator = () => {
   const {user} = useUserStore();
   const isAuthenticated = !!user?.token;
-  // const isAuthenticated = true;
 
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>

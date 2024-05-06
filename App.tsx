@@ -10,7 +10,6 @@ import {useColorScheme} from 'nativewind';
 
 function App(): React.JSX.Element {
   const {setColorScheme} = useColorScheme();
-
   useEffect(() => {
     setColorScheme('light');
   }, []);
