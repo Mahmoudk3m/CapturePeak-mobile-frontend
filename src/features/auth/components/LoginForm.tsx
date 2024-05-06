@@ -23,7 +23,12 @@ export default function LoginForm() {
   const {mutate, isError} = useUserLogin();
 
   const onSubmit = (data: AuthTypes.Payload) => {
-    mutate(data);
+    const formattedData = {
+      ...data,
+      username: data.username.toLowerCase(),
+    };
+
+    mutate(formattedData);
   };
 
   return (

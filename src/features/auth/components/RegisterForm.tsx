@@ -23,7 +23,12 @@ export default function RegisterForm() {
   const {mutate, isError} = useUserLogin();
 
   const onSubmit = (data: AuthTypes.Payload) => {
-    mutate(data);
+    const formattedData = {
+      ...data,
+      username: data.username.toLowerCase(),
+    };
+
+    mutate(formattedData);
   };
 
   return (
@@ -79,7 +84,7 @@ export default function RegisterForm() {
         className="flex-row justify-center"
         entering={FadeInDown.delay(800).duration(1000).springify()}>
         <Text className="text-gray-500 font-bold">
-          Already have an account?{' '}
+          Already have an account?
         </Text>
         <TouchableOpacity
           onPress={() => {

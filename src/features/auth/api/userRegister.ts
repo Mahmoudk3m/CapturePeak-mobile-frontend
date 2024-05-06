@@ -2,8 +2,8 @@ import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useMutation} from '@tanstack/react-query';
 import {axiosClient} from '@/lib/axiosClient';
-import Cookies from 'js-cookie';
 import useUserStore from '@/stores/userStore';
+import {setToken} from '@/utils/storage';
 
 const userRegister = async (
   data: AuthTypes.Payload,
@@ -17,7 +17,7 @@ export const useUserRegister = () => {
   return useMutation({
     mutationKey: ['userRegister'],
     onSuccess: data => {
-      Cookies.set('token', data.token);
+      setToken('token', 'token', data.token);
       setUser(data);
       navigation.navigate('home');
     },

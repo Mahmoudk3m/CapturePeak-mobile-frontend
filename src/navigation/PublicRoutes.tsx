@@ -4,7 +4,7 @@ import {Login, Register} from '@/features/auth';
 
 const Stack = createNativeStackNavigator();
 
-const CommonRoutes = () => {
+const PublicRoutes = () => {
   return (
     <>
       <Stack.Screen name="Login" component={Login} />
@@ -13,4 +13,4 @@ const CommonRoutes = () => {
   );
 };
 
-export default CommonRoutes;
+export default PublicRoutes;
