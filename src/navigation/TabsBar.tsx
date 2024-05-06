@@ -36,12 +36,12 @@ const TabsBar = (props: Props) => {
             }}
             key={i}>
             <View key={route} className="flex flex-col items-center">
-              {RouteIcon.source.name === 'UserIcon' ? (
+              {RouteIcon.source.name === 'UserIcon' && user?.image ? (
                 <Image
                   source={{uri: user?.image}}
                   className={clsx(
                     'w-8 h-8 rounded-full',
-                    activeRoute && 'border-2 border-primary-400 ',
+                    activeRoute && 'border-2 border-primary-400',
                   )}
                 />
               ) : RouteIcon.source.name === 'PlusIcon' ? (

@@ -4,6 +4,7 @@ import {Home} from '@/features/home';
 import TabsBar from './TabsBar';
 import {HomeIcon, PlusIcon, UserIcon} from '@/assets/icons';
 import UploadButton from '@/features/upload/components/Button';
+import {Profile} from '@/features//profile';
 
 const TabNavigator = createBottomTabNavigator();
 const Icons = [
@@ -28,8 +29,7 @@ export default function TabNavigation() {
       tabBar={props => <TabsBar {...props} icons={Icons} />}>
       <TabNavigator.Screen name="Home" component={Home} />
       <TabNavigator.Screen name="UploadButton" component={UploadButton} />
-
-      {/* <TabNavigator.Screen name="Profile" component={Profile} /> */}
+      <TabNavigator.Screen name="Profile" component={Profile} />
     </TabNavigator.Navigator>
   );
 }
