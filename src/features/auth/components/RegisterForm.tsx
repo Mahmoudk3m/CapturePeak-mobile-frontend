@@ -4,12 +4,12 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {useForm} from 'react-hook-form';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useUserLogin} from '../api/userLogin';
 import {Text, TouchableOpacity} from 'react-native';
 import Field from '../components/Field';
 import Animated, {FadeInDown} from 'react-native-reanimated';
 import registerSchema from '../schemas/register';
 import ErrorMessage from '@/Shared/components/ErrorMessage';
+import {useUserRegister} from '../api/userRegister';
 
 export default function RegisterForm() {
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -18,9 +18,9 @@ export default function RegisterForm() {
     control,
     handleSubmit,
     formState: {errors},
-  } = useForm<AuthTypes.Payload>({resolver: yupResolver(registerSchema)});
+  } = useForm<AuthTypes.RegisterForm>({resolver: yupResolver(registerSchema)});
 
-  const {mutate, isError, isPending} = useUserLogin();
+  const {mutate, isError, isPending} = useUserRegister();
 
   const onSubmit = (data: AuthTypes.Payload) => {
     const formattedData = {
@@ -75,7 +75,7 @@ export default function RegisterForm() {
           className="w-full bg-sky-400 p-3 rounded-2xl mb-3"
           onPress={handleSubmit(onSubmit)}>
           <Text className="text-xl font-bold text-white text-center">
-            {isPending ? 'Registering User' : 'Register'}
+            {isPending ? 'Registering User ...' : 'Register'}
           </Text>
         </TouchableOpacity>
       </Animated.View>
@@ -93,7 +93,7 @@ export default function RegisterForm() {
           <Text className="text-sky-600 font-bold">SignIn</Text>
         </TouchableOpacity>
       </Animated.View>
-      {isError && <ErrorMessage message="Invalid credentials" />}
+      {isError && <ErrorMessage message="User already exists" />}
     </>
   );
 }

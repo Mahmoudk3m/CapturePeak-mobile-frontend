@@ -19,7 +19,7 @@ export const useUserRegister = () => {
     onSuccess: data => {
       setToken('token', 'token', data.token);
       setUser(data);
-      navigation.navigate('home');
+      navigation.navigate('Home');
     },
     onError: error => {
       console.error('Registration error:', error);

@@ -10,4 +10,10 @@ declare namespace AuthTypes {
     password: string;
     image?: string;
   }
+
+  interface RegisterForm {
+    username: string;
+    password: string;
+    confirmPassword: string;
+  }
 }
